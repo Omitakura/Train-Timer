@@ -1,5 +1,5 @@
-$('#train-time').mask('00:00');
-$('#time-freq').mask('0#');
+// $('#train-time').mask('00:00');
+// $('#time-freq').mask('0#');
 //initialize firebase
 var config = {
     apikey: "AIzaSyCxuLoAiSG_d69-43Tj43hLX6lgzg6Dq04",
@@ -20,7 +20,7 @@ var updateTime = function () {
 setInterval(updateTime, 1000); // every second
 
 //sumbit for new train
-$("#submit").on("click", function () {
+$("#btn-add").on("click", function () {
     event.preventDefault();
     //pushing newly submitted train data into firebase
     database.ref().push({
@@ -35,6 +35,15 @@ $("#submit").on("click", function () {
     $("#time-freq").val('');
 });
 database.ref().on("child_added", function (snapshot, prevChildKey) {
+    // // generate remove button
+    // var btn = $("<button>");
+    // btn.addClass("trash-btn");
+    // btn.attr("data-key", snapshot.key);
+    // var i = $("<i>");
+    // i.addClass("material-icons");
+    // i.text("delete")
+    // btn.append(i);
+    // btn.click(remove);
     // generate table elements for new train
     var $tr = $('<tr>').append(
         $('<td>').text(snapshot.val().name),
